@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import restapi.model.Contato;
 import restapi.repository.ContatoRepository;
+
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ContatoService {
@@ -15,8 +17,12 @@ public class ContatoService {
         return contatoRepository.findAll();
     }
 
-    public Contato pesquisar(Integer id) {
-        return contatoRepository.findAllById(id);
+    public Contato pesquisar(Long id) {
+        Optional<Contato> optional = contatoRepository.findById(id);
+        if (optional.isPresent()) {
+            return optional.get();
+        }
+        return null;
     }
 
     public Contato cadastrar(Contato contato) {

@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import restapi.model.Contato;
 import restapi.service.ContatoService;
+import java.util.List;
 
 @RestController
 public class ContatoController {
@@ -17,7 +18,7 @@ public class ContatoController {
     }
 
     @GetMapping("/{id}")
-    public Contato pesquisar(@PathVariable(value = "id") Integer id) {
+    public Contato pesquisar(@PathVariable(value = "id") Long id) {
         return contatoService.pesquisar(id);
     }
 
