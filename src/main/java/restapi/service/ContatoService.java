@@ -26,7 +26,8 @@ public class ContatoService {
         return contatoRepository.save(contato);
     }
 
-    public Contato editar(Contato contato) {
+    public Contato editar(Contato contato, Long id) {
+        contato.setId(id);
         return contatoRepository.save(contato);
     }
 

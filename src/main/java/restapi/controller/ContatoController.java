@@ -3,7 +3,10 @@ package restapi.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import restapi.model.Contato;
+import restapi.request.ContatoFormRequest;
 import restapi.service.ContatoService;
+
+import javax.validation.Valid;
 import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -24,13 +27,15 @@ public class ContatoController {
     }
 
     @PostMapping
-    public Contato cadastrar(@RequestBody Contato contato) {
+    public Contato cadastrar(@Valid @RequestBody ContatoFormRequest contatoRequest) {
+        Contato contato = new Contato(contatoRequest);
         return contatoService.cadastrar(contato);
     }
 
-    @PutMapping
-    public Contato editar(@RequestBody Contato contato) {
-        return contatoService.editar(contato);
+    @PutMapping("/{id}")
+    public Contato editar(@Valid @RequestBody ContatoFormRequest contatoRequest, @PathVariable(value = "id") Long id) {
+        Contato contato = new Contato(contatoRequest);
+        return contatoService.editar(contato, id);
     }
 
     @DeleteMapping("/{id}")

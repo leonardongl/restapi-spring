@@ -1,9 +1,16 @@
 package restapi.request;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class ContatoFormRequest {
+    @NotBlank(message = "Nome é um campo obrigatório.")
     private String nome;
+
     private String email;
+
     private String telefone;
+
     private char sexo;
 
     public String getNome() {

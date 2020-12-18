@@ -1,8 +1,10 @@
 package restapi.model;
 
+import restapi.request.ContatoFormRequest;
+
 import javax.persistence.*;
 
-@Entity(name = "CONTATOS")
+@Entity(name = "contatos")
 public class Contato {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,8 +19,17 @@ public class Contato {
     @Column(nullable = true, length = 20)
     private String telefone;
 
-    @Column(nullable = false, length = 1)
+    @Column(nullable = false)
     private char sexo;
+
+    public Contato() { }
+
+    public Contato(ContatoFormRequest contatoFormRequest) {
+        this.nome = contatoFormRequest.getNome();
+        this.email = contatoFormRequest.getEmail();
+        this.telefone = contatoFormRequest.getTelefone();
+        this.sexo = contatoFormRequest.getSexo();
+    }
 
     public Long getId() {
         return id;
