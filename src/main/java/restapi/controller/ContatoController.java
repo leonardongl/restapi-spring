@@ -1,13 +1,14 @@
 package restapi.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import restapi.model.Contato;
 import restapi.service.ContatoService;
 import java.util.List;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
+@RequestMapping("/contatos")
 public class ContatoController {
     @Autowired
     ContatoService contatoService;
@@ -23,7 +24,6 @@ public class ContatoController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
     public Contato cadastrar(@RequestBody Contato contato) {
         return contatoService.cadastrar(contato);
     }
@@ -33,8 +33,8 @@ public class ContatoController {
         return contatoService.editar(contato);
     }
 
-    @DeleteMapping
-    public void excluir(@RequestBody Contato contato) {
-        contatoService.excluir(contato);
+    @DeleteMapping("/{id}")
+    public void excluir(@PathVariable(value = "id") Long id) {
+        contatoService.excluir(id);
     }
 }

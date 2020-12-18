@@ -2,9 +2,9 @@ package restapi.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import restapi.exception.ObjectNotFoundException;
 import restapi.model.Contato;
 import restapi.repository.ContatoRepository;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -19,10 +19,7 @@ public class ContatoService {
 
     public Contato pesquisar(Long id) {
         Optional<Contato> optional = contatoRepository.findById(id);
-        if (optional.isPresent()) {
-            return optional.get();
-        }
-        return null;
+        return optional.orElseThrow(() -> new ObjectNotFoundException("Não foi possível encontrar contato"));
     }
 
     public Contato cadastrar(Contato contato) {
@@ -33,7 +30,8 @@ public class ContatoService {
         return contatoRepository.save(contato);
     }
 
-    public void excluir(Contato contato) {
+    public void excluir(Long id) {
+        Contato contato = this.pesquisar(id);
         contatoRepository.delete(contato);
     }
 }

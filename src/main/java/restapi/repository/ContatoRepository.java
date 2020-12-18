@@ -1,8 +1,8 @@
 package restapi.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import restapi.model.Contato;
 
-public interface ContatoRepository extends CrudRepository<Contato, Long> {
+public interface ContatoRepository extends JpaRepository<Contato, Long> {
 
 }
