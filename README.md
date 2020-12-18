@@ -12,3 +12,8 @@ API REST de um pequeno sistema de agenda desenvolvido utilizando Spring Boot. Tr
 - DBeaver Community
 - MySQL Community
 - Postman
+
+# Como buildar o projeto
+- Clone o repositório -> git clone https://github.com/leonardongl/restapi-spring.git
+- Abra o projeto em uma IDE Java, ex: Eclipse, IntelliJ, etc.
+- Execute o projeto para iniciar a aplicação backend
