@@ -16,4 +16,5 @@ API REST de um pequeno sistema de agenda desenvolvido utilizando Spring Boot. Tr
 # Como buildar o projeto
 - Clone o repositório -> git clone https://github.com/leonardongl/restapi-spring.git
 - Abra o projeto em uma IDE Java, ex: Eclipse, IntelliJ, etc.
+- Para alterar informações da conexão do banco de dados acesse o arquivo /restapi-spring/src/main/resources
 - Execute o projeto para iniciar a aplicação backend
